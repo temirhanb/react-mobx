@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { observer } from "mobx-react-lite";
 import { nanoid } from "nanoid";
 import peoplesStore from "../../../store/peoples";
@@ -6,7 +6,6 @@ import { ContentTable, HeadersTable } from "../../../entities";
 import { Preloader } from "../../../shared/ui/preloader";
 
 export const TableWidget = observer(() => {
-
 
   const [currentPage, setCurrentPage] = useState(2)
   const [fetching, setFetching] = useState(false)
@@ -29,15 +28,12 @@ export const TableWidget = observer(() => {
   }, [fetching])
 
   useEffect(() => {
+    peoplesStore.getPeoplesData()
     document.addEventListener('scroll', scrollHandler)
     return () => {
       document.removeEventListener('scroll', scrollHandler)
     }
   }, [])
-
-  useMemo(()=>{
-    peoplesStore.getPeoplesData()
-  },[])
 
   if (peoplesStore.peoples.length === 0) {
     return <div className={'flex h-[200px] justify-center items-center'}><Preloader/></div>
