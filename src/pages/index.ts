@@ -1,0 +1,5 @@
+export * from './favorites'
+export * from './peoples'
+export * from './main'
+export * from './notFound'
+export * from './singleActor'
