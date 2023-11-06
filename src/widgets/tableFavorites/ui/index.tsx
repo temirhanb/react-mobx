@@ -7,7 +7,7 @@ import { ContentTable, HeadersTable } from "../../../entities";
 export const TableWidgetFavorites = observer(() => {
 
   useEffect(() => {
-    const items = JSON.parse(localStorage.getItem('favorite') as string);
+    const items = JSON.parse(localStorage.getItem('favorites') as string);
     if (items) {
       peoplesStore.setFavorites(items);
     }
