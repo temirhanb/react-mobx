@@ -1,5 +1,5 @@
 export const MainPage = ()=>{
   return(
-    <div>Main</div>
+    <div className={'text-slate-500 text-xl m-10'}>Hello world!</div>
   )
 }

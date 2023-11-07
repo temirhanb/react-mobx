@@ -24,13 +24,13 @@ export const TableWidgetFavorites = observer(() => {
       <tbody>
       <HeadersTable/>
       {peoplesStore.favorites.map((item) => {
-        const id = item.url.split('/').filter((item:any) => typeof Number(item) === 'number')
+        const id = item.url.split('/')
 
         return (
           <ContentTable
             key={nanoid(5)}
             id={id}
-            {...item}
+            actor={item}
           />
         )
       })}

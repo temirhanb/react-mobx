@@ -1,17 +1,18 @@
 import peoplesStore from "../../../../store/peoples";
 import { observer } from "mobx-react-lite";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
+import { IActor } from "../../../../shared/types/peoples";
 
-export const ActionsTable = observer((props: any) => {
+export const ActionsTable: React.FC<IActor> = observer((props) => {
   const {name} = props
   const isEmpty = peoplesStore.favorites.find((item) => item.name === name)
   useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(peoplesStore.favorites));
   }, [peoplesStore.favorites])
-  const handlerAddFavorite = (item: any) => {
+  const handlerAddFavorite = (item: IActor) => {
     peoplesStore.addFavorites(item)
   }
-  const handlerDeleteFavorite = (item: any) => {
+  const handlerDeleteFavorite = (item: IActor) => {
     peoplesStore.deleteFavorites(item)
   }
 
