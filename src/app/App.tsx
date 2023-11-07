@@ -4,6 +4,7 @@ import { Header } from "../widgets";
 import './index.css';
 
 function App() {
+
   return (
     <div className="flex flex-col">
       <Routes>

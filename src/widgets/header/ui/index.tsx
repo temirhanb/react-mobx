@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { SearchBar } from "../../../entities";
+import { Search } from "../../search";
 
 export const Header = () => {
   return (
@@ -9,7 +9,7 @@ export const Header = () => {
           <NavLink className={'mr-5 text-slate-50 text-xl hover:opacity-70'} to="/favorites">Favorites</NavLink>
           <NavLink className={'text-xl text-slate-50 hover:opacity-70'} to="/peoples">Peoples</NavLink>
         </div>
-        <SearchBar/>
+        <Search/>
       </div>
       <Outlet/>
     </>

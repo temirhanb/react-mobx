@@ -1,10 +1,17 @@
 import { observer } from "mobx-react-lite" // Or "mobx-react".
-import singleActorState from "../../../store/peoples";
-import peoplesStore from "../../../store/peoples";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { nanoid } from "nanoid";
 import { ActionsTable } from "../../../entities";
+import singleActorState from "../../../store/peoples";
+
+type Entries<T> = {
+  [K in keyof T]: [K, T[K]];
+}[keyof T][];
+
+function entriesFromObject<T extends object>(object: T): Entries<T> {
+  return Object.entries(object) as Entries<T>;
+}
 
 export const SingleActor = observer(
   () => {
@@ -12,7 +19,7 @@ export const SingleActor = observer(
     const {id} = useParams()
 
     useEffect(() => {
-      singleActorState.fetchSingleActor(id)
+      singleActorState.fetchSingleActor(String(id))
     }, [])
 
     return (
@@ -29,19 +36,19 @@ export const SingleActor = observer(
           </tr>
           <tr>
             <td>
-              {Object.entries(singleActorState.actor).map(([key, value]: any) => {
+              {entriesFromObject(singleActorState.actor).map(([key, value]) => {
                 if (Array.isArray(value)) {
                   return (
-                    <div className={'mb-5'}>
+                    <div key={nanoid(5)} className={'mb-5'}>
                       <span>{key.charAt(0).toUpperCase() + key.slice(1)}:</span>
                       <ul>
-                        {value.map((item: any) => <li key={nanoid(4)}>{item}</li>)}
+                        {value.map((item: string) => <li key={nanoid(4)}>{item}</li>)}
                       </ul>
                     </div>
                   )
                 }
                 return (
-                  <div className={'mb-5'}>
+                  <div key={nanoid(5)} className={'mb-5'}>
                     <span>{key.charAt(0).toUpperCase() + key.slice(1)}:</span>
                     <span>{value}</span>
                   </div>

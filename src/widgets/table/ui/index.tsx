@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { observer } from "mobx-react-lite";
 import { nanoid } from "nanoid";
 import peoplesStore from "../../../store/peoples";
 import { ContentTable, HeadersTable } from "../../../entities";
-import { Preloader } from "../../../shared/ui/preloader";
+import { Preloader } from "../../../shared";
 
 export const TableWidget = observer(() => {
 
   const [currentPage, setCurrentPage] = useState(2)
   const [fetching, setFetching] = useState(false)
 
-  const scrollHandler = (e:any) => {
-    if (e.target.documentElement.scrollHeight -
-      (e.target.documentElement.scrollTop + window.innerHeight) < 30
+  const scrollHandler = () => {
+    if (document.documentElement.scrollHeight -
+      (document.documentElement.scrollTop + window.innerHeight) < 30
       && peoplesStore.peoples.length < peoplesStore.count) {
       setFetching(true)
     }
@@ -41,17 +41,17 @@ export const TableWidget = observer(() => {
 
   return (
     <div className={'m-10 flex flex-col'}>
-      <table >
+      <table>
         <tbody>
         <HeadersTable/>
         {peoplesStore.peoples.map((item) => {
-          const id = item.url.split('/').filter((item:any) => typeof Number(item) === 'number')
+          const id = item.url.split('/')
 
           return (
             <ContentTable
               key={nanoid(5)}
               id={id}
-              {...item}
+              actor={item}
             />
           )
         })}
