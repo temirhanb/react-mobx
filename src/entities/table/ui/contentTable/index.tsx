@@ -29,7 +29,7 @@ export const ContentTable: React.FC<IProps> = observer((props) => {
 
     return (
       <tr className={'h-14 border-b-2'}>
-        <td onClick={() => handlerSetActor(actor)} className={'text-slate-800 hover:opacity-70'}>
+        <td onClick={() => handlerSetActor(actor)} className={'text-slate-800 underline hover:opacity-70'}>
           <Link to={`/peoples/${id[5]}`}>
             {name}
           </Link>
