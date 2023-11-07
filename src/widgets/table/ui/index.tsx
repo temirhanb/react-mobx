@@ -28,7 +28,16 @@ export const TableWidget = observer(() => {
   }, [fetching])
 
   useEffect(() => {
+
+    const items = JSON.parse(localStorage.getItem('favorites') as string);
+
+    if (items) {
+
+      peoplesStore.setFavorites(items);
+    }
+
     peoplesStore.getPeoplesData()
+
     document.addEventListener('scroll', scrollHandler)
     return () => {
       document.removeEventListener('scroll', scrollHandler)

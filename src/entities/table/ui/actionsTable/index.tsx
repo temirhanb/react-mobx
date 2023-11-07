@@ -6,9 +6,6 @@ import { IActor } from "../../../../shared/types/peoples";
 export const ActionsTable: React.FC<IActor> = observer((props) => {
   const {name} = props
   const isEmpty = peoplesStore.favorites.find((item) => item.name === name)
-  useEffect(() => {
-    localStorage.setItem("favorites", JSON.stringify(peoplesStore.favorites));
-  }, [peoplesStore.favorites])
   const handlerAddFavorite = (item: IActor) => {
     peoplesStore.addFavorites(item)
   }

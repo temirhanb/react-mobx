@@ -8,6 +8,7 @@ export const TableWidgetFavorites = observer(() => {
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem('favorites') as string);
+    console.log(items)
     if (items) {
       peoplesStore.setFavorites(items);
     }
