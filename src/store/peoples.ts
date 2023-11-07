@@ -40,7 +40,6 @@ class Peoples {
   deleteFavorites(item: IActor) {
 
     this.favorites = this.favorites.filter(({name}) => {
-      console.log(name, item)
       return item.name !== name
     })
     localStorage.setItem('favorites', JSON.stringify(this.favorites))
