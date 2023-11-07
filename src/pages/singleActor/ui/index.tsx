@@ -39,7 +39,7 @@ export const SingleActor = observer(
               {entriesFromObject(singleActorState.actor).map(([key, value]) => {
                 if (Array.isArray(value)) {
                   return (
-                    <div className={'mb-5'}>
+                    <div key={nanoid(5)} className={'mb-5'}>
                       <span>{key.charAt(0).toUpperCase() + key.slice(1)}:</span>
                       <ul>
                         {value.map((item: string) => <li key={nanoid(4)}>{item}</li>)}
@@ -48,7 +48,7 @@ export const SingleActor = observer(
                   )
                 }
                 return (
-                  <div className={'mb-5'}>
+                  <div key={nanoid(5)} className={'mb-5'}>
                     <span>{key.charAt(0).toUpperCase() + key.slice(1)}:</span>
                     <span>{value}</span>
                   </div>
