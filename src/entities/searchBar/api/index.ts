@@ -1,13 +1,13 @@
 import axios from "axios";
 
-export const searchRequest = async (question :string = 'luk')=>{
+export const searchRequest = async (word :string = '')=>{
   try {
 
-    const {data} = await axios.get(`https://swapi.dev/api/people/?search=${question}`)
-    const {results, count} = data
-    return {results, count}
+    const {data} = await axios.get(`https://swapi.dev/api/people/?search=${word}`)
+    const {results} = data
+    return results
   } catch (e) {
 
-    console.error(e)
+    throw(e)
   }
 }

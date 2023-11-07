@@ -12,7 +12,6 @@ class Peoples {
   favorites: IActor[] = [];
   actor = {} as IActor;
   count: number = 0;
-
   constructor() {
     makeAutoObservable(this)
   }
