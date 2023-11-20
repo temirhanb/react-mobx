@@ -2,6 +2,7 @@ const path = require('path')
 const autoprefixer = require("autoprefixer");
 const tailwindcss = require("tailwindcss");
 const HtmlPlugin = require("html-webpack-plugin");
+const { HotModuleReplacementPlugin } = require('webpack');
 
 module.exports = {
   mode: "development",
@@ -18,6 +19,13 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.(js|jsx)$/,
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env', '@babel/preset-react']
+        }
+      },
       {test: /\.([cm]?ts|tsx)$/, loader: "ts-loader"},
       {
         test: /\.(png|jpg)$/,
@@ -56,6 +64,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new HotModuleReplacementPlugin(),
     new HtmlPlugin({template: "public/index.html"})
   ],
   resolve: {
