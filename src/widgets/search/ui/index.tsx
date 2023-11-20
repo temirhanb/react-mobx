@@ -1,9 +1,8 @@
+import React from "react";
 import { observer } from "mobx-react-lite";
 import { SearchBar, SearchList } from "../../../entities";
-import searchStore from "./../../../store/seach";
-import { useEffect, useState } from "react";
 
-export const Search = observer(() => {
+export const Search: React.FC = observer(() => {
 
   return (
     <div>

@@ -1,7 +1,9 @@
-import { NavLink, Outlet } from "react-router-dom";
+import React from "react";
+
+import { Link, NavLink, Outlet } from "react-router-dom";
 import { Search } from "../../search";
 
-export const Header = () => {
+export const Header: React.FC = () => {
   return (
     <>
       <div className={'flex bg-cyan-700 p-10 justify-between flex-row'}>

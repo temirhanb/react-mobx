@@ -18,6 +18,7 @@ class Peoples {
 
   async getPeoplesData() {
     const newPeople: GetPeoples = await getPeoples()
+    console.log(newPeople.count)
     this.count = newPeople.count
     this.peoples = [...this.peoples, ...newPeople.results]
   }

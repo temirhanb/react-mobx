@@ -1,6 +1,7 @@
+import React from "react";
 import { TableWidget } from "../../../widgets";
 
-export const PeoplesPage = () => {
+export const PeoplesPage: React.FC = () => {
 
   return (
     <>

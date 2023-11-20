@@ -1,7 +1,7 @@
 import axios from "axios";
 import { IActor } from "../../../../shared/types/peoples";
 
-type IRequest =  {
+type IRequest = {
   results: IActor[],
   count: number
 }
@@ -9,8 +9,7 @@ type IRequest =  {
 export const getPeoples = async (): Promise<IRequest> => {
   try {
     const {data} = await axios.get('https://swapi.dev/api/people/?page=1')
-    const {results, count} = data
-    return {results, count}
+    return data
   } catch (e) {
     throw(e)
   }

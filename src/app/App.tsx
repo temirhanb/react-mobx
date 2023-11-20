@@ -1,9 +1,11 @@
-import { Route, Routes } from "react-router-dom";
+import React from "react";
+import { Route, Routes ,BrowserRouter as Router} from "react-router-dom";
+
 import { FavoritesPage, MainPage, NotFoundPage, PeoplesPage, SingleActor } from "../pages";
 import { Header } from "../widgets";
 import './index.css';
 
-function App() {
+export const App:React.FC =()=> {
 
   return (
     <div className="flex flex-col">
@@ -19,5 +21,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

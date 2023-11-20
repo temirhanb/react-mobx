@@ -58,6 +58,7 @@ export const TableWidget = observer(() => {
 
           return (
             <ContentTable
+              data-testid={'peoples'}
               key={nanoid(5)}
               id={id}
               actor={item}
